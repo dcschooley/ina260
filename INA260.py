@@ -338,7 +338,7 @@ class INA260(object):
 		return self._myAlarmType
 
 	def setOverCurrentLimit(self, limit):
-		if self._myBus and self._myAlarmType == ALARM_NOTSET:
+		if self._myBus and (self._myAlarmType == ALARM_NOTSET):
 			self._writeAnalog(INA260_REG_ALERT_LIMIT, limit, currentScale)
 			mask = self._readDigital(INA260_REG_MASK_ENABLE)
 			mask = (mask & 0x0403) + 0x8000
@@ -346,7 +346,7 @@ class INA260(object):
 			self._myAlarmType = ALARM_HIGHCURRENT
 
 	def setUnderCurrentLimit(self, limit):
-		if self._myBus and self._myAlarmType == ALARM_NOTSET:
+		if self._myBus and (self._myAlarmType == ALARM_NOTSET):
 			self._writeAnalog(INA260_REG_ALERT_LIMIT, limit, currentScale)
 			mask = self._readDigital(INA260_REG_MASK_ENABLE)
 			mask = (mask & 0x0403) + 0x4000
@@ -354,7 +354,7 @@ class INA260(object):
 			self._myAlarmType = ALARM_LOWCURRENT
 
 	def setOverVoltageLimit(self, limit):
-		if self._myBus and self._myAlarmType == ALARM_NOTSET:
+		if self._myBus and (self._myAlarmType == ALARM_NOTSET):
 			self._writeAnalog(INA260_REG_ALERT_LIMIT, limit, voltageScale)
 			mask = self._readDigital(INA260_REG_MASK_ENABLE)
 			mask = (mask & 0x0403) + 0x2000
@@ -362,7 +362,7 @@ class INA260(object):
 			self._myAlarmType = ALARM_HIGHVOLTAGE
 
 	def setUnderVoltageLimit(self, limit):
-		if self._myBus and self._myAlarmType == ALARM_NOTSET:
+		if self._myBus and (self._myAlarmType == ALARM_NOTSET):
 			self._writeAnalog(INA260_REG_ALERT_LIMIT, limit, voltageScale)
 			mask = self._readDigital(INA260_REG_MASK_ENABLE)
 			mask = (mask & 0x0403) + 0x1000
@@ -370,7 +370,7 @@ class INA260(object):
 			self._myAlarmType = ALARM_LOWVOLTAGE
 
 	def setOverPowerLimit(self, limit):
-		if self._myBus and self._myAlarmType == ALARM_NOTSET:
+		if self._myBus and (self._myAlarmType == ALARM_NOTSET):
 			self._writeAnalog(INA260_REG_ALERT_LIMIT, limit, powerScale)
 			mask = self._readDigital(INA260_REG_MASK_ENABLE)
 			mask = (mask & 0x0403) + 0x800
