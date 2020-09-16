@@ -169,7 +169,6 @@ class INA260(object):
 	def getAddress(self):
 		return(self._myAddr)
 
-
 # Methods to read the voltage, current, and power			
 	def readVoltage(self):
 		voltage = self._readAnalog(INA260_REG_BUSVOLTAGE, voltageScale)
@@ -334,6 +333,10 @@ class INA260(object):
 # These functions are a one shot deal.
 # Call resetConfig to completely reset the configuration and allow a change
 # of the alarm. 
+
+	def getAlarmType:
+		return self._myAlarmType
+
 	def setOverCurrentLimit(self, limit):
 		if self._myBus and self._myAlarmType == ALARM_NOTSET:
 			self._writeAnalog(INA260_REG_ALERT_LIMIT, limit, currentScale)
